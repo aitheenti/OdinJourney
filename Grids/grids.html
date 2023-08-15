@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 956px;
+        }
+
+        .grid-item {
+
+            margin: 30px;
+            width: 56px;
+            height: 56px;
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+
+        .grid-item:hover {
+            background: blue;
+        }
+
+        #gridarea {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        #update {
+            max-width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gridarea">
+        <form>
+            <input type="text" id="sizeValue" value="" required />
+            <button id="update" type="button" onclick="gridUpdate()">Update grid size</button>
+        </form>
+
+        <div id="grid-container"></div>
+    </div>
+    <script>
+        const gridContainer = document.getElementById("grid-container");
+
+
+        function gridUpdate() {
+            const inputVal = document.getElementById('sizeValue')
+            console.log('grid update ', inputVal.value)
+            for (let i = 0; i < inputVal.value; i++) {
+                const div = document.createElement("div");
+                div.classList.add("grid-item");
+                gridContainer.appendChild(div);
+            }
+            inputVal.value = ''
+        }
+
+    </script>
+</body>
+
+</html>
